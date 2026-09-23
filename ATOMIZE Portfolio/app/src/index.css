@@ -1,50 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Atomize-AI Official Brand Theme ─────────────────────────────────────────── */
+:root,
+[data-theme="cyberpunk"],
+[data-theme="atomize-ai"] {
+  /* Brand Core Palette */
+  --cyber-teal:    #008084;
+  --electric-blue: #3580E6;
+  --lime-energy:   #88E03F;
+
+  /* Theme Canvas & Glassmorphic Surfaces */
+  --bg:            #040B11;             /* Deep cosmic obsidian teal */
+  --surface:       rgba(7, 24, 34, 0.75); /* Frosted glassmorphism card */
+  --surface2:      rgba(11, 34, 48, 0.85);/* Raised container */
+  --surface-solid: #081B26;
+
+  /* Roles */
+  --accent:        #88E03F;             /* Lime Energy — Primary CTA glow & key badges */
+  --accent2:       #3580E6;             /* Electric Blue — Secondary CTA & orbital connections */
+  --primary-teal:  #008084;             /* Cyber Teal — Wordmark & primary headline accents */
+
+  /* Text Roles */
+  --text:          #F8FAFC;             /* Clean crisp white */
+  --text-sub:      #94A3B8;             /* Muted tech slate */
+  --text-muted:    #475569;             /* Subdued captions */
+
+  /* Borders & Glass Glow */
+  --border:        rgba(0, 128, 132, 0.22); /* Subtle Cyber Teal border */
+  --border-h:      rgba(0, 128, 132, 0.65); /* Vibrant Cyber Teal hover */
+  --border-lime:   rgba(136, 224, 63, 0.45);/* Lime Energy border highlight */
+  --border-blue:   rgba(53, 128, 230, 0.45);/* Electric Blue border highlight */
+
+  /* Glows */
+  --glow:          rgba(136, 224, 63, 0.25); /* Lime Energy ambient glow */
+  --glow-h:        rgba(136, 224, 63, 0.45);
+  --glow-teal:     rgba(0, 128, 132, 0.35);
+  --glow-blue:     rgba(53, 128, 230, 0.35);
+
+  /* Background Grid / Mesh */
+  --grid-color:    rgba(53, 128, 230, 0.05);
+
+  /* Radix UI mapped vars */
+  --background:         207 65% 4%;
+  --foreground:         210 40% 98%;
+  --card:               205 60% 8%;
+  --card-foreground:    210 40% 98%;
+  --popover:            205 60% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary:            89 74% 56%;
+  --primary-foreground: 207 65% 4%;
+  --secondary:          215 80% 56%;
+  --secondary-foreground:210 40% 98%;
+  --muted:              205 40% 14%;
+  --muted-foreground:   215 20% 65%;
+  --accent-shadcn:      89 74% 56%;
+  --accent-foreground:  207 65% 4%;
+  --destructive:        0 84.2% 60.2%;
+  --destructive-foreground:0 0% 98%;
+  --border-shadcn:      182 100% 26% / 0.22;
+  --input:              205 40% 14%;
+  --ring:               89 74% 56%;
+  --radius:             0.75rem;
+}
+
+/* ─── Secondary Theme: Deep Space Navy ────────────────────────────────────────── */
+[data-theme="navy-emerald"] {
+  --cyber-teal:    #00A896;
+  --electric-blue: #028090;
+  --lime-energy:   #02C39A;
+  --bg:            #020B14;
+  --surface:       rgba(4, 21, 38, 0.75);
+  --surface2:      rgba(8, 33, 58, 0.85);
+  --surface-solid: #061A2E;
+  --accent:        #02C39A;
+  --accent2:       #028090;
+  --primary-teal:  #00A896;
+  --text:          #E8F4FD;
+  --text-muted:    #3B6C94;
+  --text-sub:      #5B8DB8;
+  --border:        rgba(2, 195, 154, 0.2);
+  --border-h:      rgba(2, 195, 154, 0.55);
+  --border-lime:   rgba(2, 195, 154, 0.45);
+  --border-blue:   rgba(2, 128, 144, 0.45);
+  --glow:          rgba(2, 195, 154, 0.25);
+  --glow-h:        rgba(2, 195, 154, 0.45);
+  --glow-teal:     rgba(0, 168, 150, 0.35);
+  --glow-blue:     rgba(2, 128, 144, 0.35);
+  --grid-color:    rgba(2, 128, 144, 0.05);
+
+  --background:         210 90% 5%;
+  --foreground:         210 40% 95%;
+  --card:               210 80% 9%;
+  --card-foreground:    210 40% 95%;
+  --primary:            165 98% 39%;
+  --primary-foreground: 210 90% 5%;
+}
+
+/* ─── Tertiary Theme: Cyber Neon Violet ───────────────────────────────────────── */
+[data-theme="neon-purple"] {
+  --cyber-teal:    #008084;
+  --electric-blue: #7038FF;
+  --lime-energy:   #88E03F;
+  --bg:            #070311;
+  --surface:       rgba(21, 10, 36, 0.75);
+  --surface2:      rgba(33, 16, 56, 0.85);
+  --surface-solid: #150A24;
+  --accent:        #88E03F;
+  --accent2:       #7038FF;
+  --primary-teal:  #008084;
+  --text:          #F3EEFF;
+  --text-muted:    #695484;
+  --text-sub:      #9E88BD;
+  --border:        rgba(112, 56, 255, 0.22);
+  --border-h:      rgba(136, 224, 63, 0.55);
+  --border-lime:   rgba(136, 224, 63, 0.45);
+  --border-blue:   rgba(112, 56, 255, 0.45);
+  --glow:          rgba(136, 224, 63, 0.25);
+  --glow-h:        rgba(136, 224, 63, 0.45);
+  --glow-teal:     rgba(0, 128, 132, 0.35);
+  --glow-blue:     rgba(112, 56, 255, 0.35);
+  --grid-color:    rgba(112, 56, 255, 0.05);
+
+  --background:         270 85% 4%;
+  --foreground:         270 40% 95%;
+  --card:               270 70% 9%;
+  --card-foreground:    270 40% 95%;
+  --primary:            89 74% 56%;
+  --primary-foreground: 270 85% 4%;
+}
+
+/* ─── Base Styles ─────────────────────────────────────────────────────────────── */
 @layer base {
-  :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 95%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 22 100% 50%;
-    --primary-foreground: 0 0% 2%;
-    --secondary: 0 0% 7%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 22 100% 50%;
-    --accent-foreground: 0 0% 2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 95% / 0.08;
-    --input: 0 0% 15%;
-    --ring: 22 100% 50%;
-    --radius: 0.75rem;
+  * {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
   }
 
-  body {
-    @apply bg-[#050505] text-[#F3F3F3] antialiased;
-    font-family: 'Inter', sans-serif;
+  html {
     scroll-behavior: smooth;
   }
 
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    /* Atomic Gradient Mesh: subtle ambient radial blend of Teal & Electric Blue */
+    background-image:
+      radial-gradient(at 0% 0%, rgba(0, 128, 132, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 25%, rgba(53, 128, 230, 0.12) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(0, 128, 132, 0.10) 0px, transparent 50%);
+    background-attachment: fixed;
+    @apply antialiased;
+  }
+
+  /* Direction-aware typography */
+  [dir="rtl"] body,
+  [dir="rtl"] p,
+  [dir="rtl"] span,
+  [dir="rtl"] a,
+  [dir="rtl"] button,
+  [dir="rtl"] input,
+  [dir="rtl"] textarea,
+  [dir="rtl"] select,
+  [dir="rtl"] label {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  [dir="ltr"] body,
+  [dir="ltr"] p,
+  [dir="ltr"] span,
+  [dir="ltr"] a,
+  [dir="ltr"] button,
+  [dir="ltr"] input,
+  [dir="ltr"] textarea,
+  [dir="ltr"] select,
+  [dir="ltr"] label {
+    font-family: 'Inter', sans-serif;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6 {
+    font-family: 'Cairo', sans-serif;
   }
 
   ::selection {
-    background: rgba(255, 90, 0, 0.3);
-    color: #F3F3F3;
+    background: rgba(136, 224, 63, 0.35);
+    color: #ffffff;
+  }
+
+  /* Custom Atomic Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--cyber-teal);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--lime-energy);
   }
 }
 
+/* ─── Atomic Utility Classes ─────────────────────────────────────────────────── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+
+  /* Background Grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Glassmorphism Panel: semi-transparent backdrop with subtle Cyber Teal border glow */
+  .glass-card {
+    background-color: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: var(--border-h);
+    box-shadow: 0 0 35px var(--glow-teal), inset 0 0 15px rgba(0, 128, 132, 0.08);
+  }
+
+  /* Glow Effects */
+  .glow-lime {
+    box-shadow: 0 0 25px var(--glow), 0 0 50px rgba(136, 224, 63, 0.15);
+  }
+  .glow-lime-h:hover {
+    box-shadow: 0 0 35px var(--glow-h), 0 0 70px rgba(136, 224, 63, 0.25);
+  }
+  .glow-blue {
+    box-shadow: 0 0 25px var(--glow-blue);
+  }
+  .glow-teal {
+    box-shadow: 0 0 25px var(--glow-teal);
+  }
+
+  /* Text Glows */
+  .text-glow-lime {
+    text-shadow: 0 0 20px var(--lime-energy), 0 0 40px rgba(136, 224, 63, 0.4);
+  }
+  .text-glow-teal {
+    text-shadow: 0 0 20px var(--cyber-teal), 0 0 35px rgba(0, 128, 132, 0.35);
+  }
+
+  /* Brand Typography Utility Colors */
+  .text-teal { color: var(--cyber-teal); }
+  .text-blue { color: var(--electric-blue); }
+  .text-lime { color: var(--lime-energy); }
+  .bg-teal { background-color: var(--cyber-teal); }
+  .bg-blue { background-color: var(--electric-blue); }
+  .bg-lime { background-color: var(--lime-energy); }
+
+  /* Surface utility shortcuts */
+  .surface { background-color: var(--surface); }
+  .surface2 { background-color: var(--surface2); }
+  .border-theme { border-color: var(--border); }
+  .border-theme-h:hover { border-color: var(--border-h); }
+  .text-accent { color: var(--accent); }
+  .text-sub { color: var(--text-sub); }
+  .text-muted-theme { color: var(--text-muted); }
+
+  /* High-Converting CTA Buttons */
+  .btn-primary-lime {
+    background-color: var(--lime-energy);
+    color: #040B11;
+    font-weight: 800;
+    box-shadow: 0 0 20px rgba(136, 224, 63, 0.35);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .btn-primary-lime:hover {
+    background-color: #9cf053;
+    box-shadow: 0 0 35px rgba(136, 224, 63, 0.65), 0 0 60px rgba(136, 224, 63, 0.25);
+    transform: scale(1.03);
+  }
+
+  .btn-secondary-blue {
+    background-color: transparent;
+    border: 1.5px solid var(--electric-blue);
+    color: #F8FAFC;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .btn-secondary-blue:hover {
+    background-color: var(--electric-blue);
+    color: #FFFFFF;
+    box-shadow: 0 0 25px rgba(53, 128, 230, 0.5);
+    transform: scale(1.02);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-rtl {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  [dir="rtl"] .animate-marquee {
+    animation: marquee-rtl 30s linear infinite;
+  }
+  .pause-on-hover:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+
+  /* Atomic Orbit Spin */
+  @keyframes atomic-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .animate-orbit {
+    animation: atomic-spin 20s linear infinite;
   }
 }

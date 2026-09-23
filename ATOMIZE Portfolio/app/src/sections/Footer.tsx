@@ -1,50 +1,117 @@
-const footerLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Why Us', href: '#why-us' },
-  { label: 'Contact', href: '#cta' },
-]
+import { useTranslation } from 'react-i18next'
+import { useThemeContext } from '../context/ThemeContext'
+import AtomizeLogo from '../components/AtomizeLogo'
+import { socialLinks } from '../data/socials'
 
 export default function Footer() {
+  const { t } = useTranslation()
+  const { isRTL } = useThemeContext()
+  const font = isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif"
+
+  const navLinks = [
+    { key: 'services', href: '#services' },
+    { key: 'portfolio', href: '#portfolio' },
+    { key: 'process', href: '#process' },
+    { key: 'contact', href: '#contact' },
+    { key: 'faq', href: '#faq' },
+  ]
+
   return (
-    <footer className="relative bg-[#111111] py-12 md:py-16">
-      <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)]">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Brand */}
-          <div>
-            <a
-              href="#"
-              className="font-['Plus_Jakarta_Sans'] font-bold text-[20px] tracking-tight text-[#F3F3F3]"
-            >
-              ATOMIZE
+    <footer className="border-t glass-card" style={{ backgroundColor: 'var(--surface-solid)', borderColor: 'var(--border)' }}>
+      <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand column */}
+          <div className="md:col-span-2">
+            <a href="#" className="mb-4 inline-block">
+              <AtomizeLogo size={36} />
             </a>
-            <p className="font-['Inter'] text-[13px] text-[#666666] mt-2 max-w-[280px]">
-              Building intelligent systems that scale without the bloat.
+            <p className="text-[14px] leading-[1.7] mb-5 max-w-[340px]" style={{ color: 'var(--text-sub)', fontFamily: font }}>
+              {t('footer.tagline')}
             </p>
+
+            {/* Socials */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all hover:scale-110"
+                  style={{ borderColor: 'var(--border)', color: 'var(--text-sub)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--border-h)'; e.currentTarget.style.color = 'var(--accent)' }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-sub)' }}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Links */}
-          <nav className="flex flex-wrap items-center gap-6 md:gap-8">
-            {footerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="relative font-['Inter'] text-[14px] text-[#999999] hover:text-[#F3F3F3] transition-colors duration-200 group"
-              >
-                {link.label}
-                <span className="absolute -bottom-0.5 left-1/2 w-0 h-[1px] bg-[#FF5A00] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
-              </a>
-            ))}
-          </nav>
+          {/* Nav links */}
+          <div>
+            <h4 className="text-[12px] font-bold uppercase tracking-wider mb-5" style={{ color: 'var(--text-muted)', fontFamily: font }}>
+              {isRTL ? 'التنقل' : 'Navigation'}
+            </h4>
+            <ul className="space-y-3">
+              {navLinks.map(link => (
+                <li key={link.key}>
+                  <a
+                    href={link.href}
+                    className="text-[14px] transition-colors"
+                    style={{ color: 'var(--text-sub)', fontFamily: font }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}
+                  >
+                    {t(`footer.links.${link.key}`)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-[12px] font-bold uppercase tracking-wider mb-5" style={{ color: 'var(--text-muted)', fontFamily: font }}>
+              {isRTL ? 'تواصل' : 'Contact'}
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:automizeai1@gmail.com" className="text-[13px] font-mono transition-colors" style={{ color: 'var(--text-sub)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}>
+                  automizeai1@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/201112550714" target="_blank" rel="noopener noreferrer" className="text-[13px] font-mono transition-colors" style={{ color: 'var(--text-sub)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#25D366')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}>
+                  WhatsApp: +201112550714
+                </a>
+              </li>
+              <li>
+                <a href="tel:+201112550714" className="text-[13px] font-mono transition-colors" style={{ color: 'var(--text-sub)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}>
+                  +201112550714
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="mt-12 pt-6 border-t border-[rgba(243,243,243,0.08)] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-['JetBrains_Mono'] text-[11px] text-[#555555]">
-            © {new Date().getFullYear()} ATOMIZE. All rights reserved.
+        {/* Bottom bar */}
+        <div
+          className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4"
+          style={{ borderColor: 'var(--border)' }}
+        >
+          <p className="text-[12px] font-mono" style={{ color: 'var(--text-sub)' }}>
+            © {new Date().getFullYear()} Atomize-AI. {t('footer.copyright')}
           </p>
-          <p className="font-['JetBrains_Mono'] text-[11px] text-[#555555]">
-            Precision-built. Business-first.
+          <p className="text-[12px] font-mono" style={{ color: 'var(--text-muted)' }}>
+            {t('footer.legalNote')}
           </p>
         </div>
       </div>

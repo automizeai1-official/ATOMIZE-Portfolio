@@ -1,0 +1,229 @@
+{
+  "nav": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "techStack": "Tech Stack",
+    "process": "Process",
+    "whyUs": "Why Us",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Full-Service Software House · AI Transformation Agency",
+    "headline1": "We Build Systems That",
+    "headline2": "Change the Game.",
+    "subtitle": "From custom web & mobile apps to AI automation and e-commerce solutions — ATOMIZE turns your vision into a world-class digital product that competes on a global stage.",
+    "cta1": "Book Free Consultation",
+    "cta2": "View Our Work",
+    "stat1Label": "Projects Delivered",
+    "stat2Label": "Happy Clients",
+    "stat3Label": "Technologies",
+    "stat4Label": "Years Experience"
+  },
+  "trustedBy": {
+    "label": "Projects We've Shipped"
+  },
+  "services": {
+    "label": "Our Services",
+    "title": "Full-Spectrum Software Solutions",
+    "subtitle": "From idea to launch — we provide end-to-end software services built for startups, enterprises, and everything in between.",
+    "cta": "Learn More",
+    "items": {
+      "web": {
+        "title": "Custom Web & Mobile Development",
+        "desc": "Bespoke web platforms, SaaS products, and cross-platform mobile apps built with the latest tech and best engineering practices.",
+        "features": ["React / Next.js Web Apps", "Flutter Mobile Apps", "Full SaaS Platforms", "Interactive UI/UX"]
+      },
+      "ai": {
+        "title": "AI Automation & Client Dashboards",
+        "desc": "Integrating AI agents with n8n, custom APIs, and data analytics dashboards that give you full operational control.",
+        "features": ["Autonomous AI Agents", "n8n & API Integration", "WhatsApp Business Integration", "Custom Analytics Dashboards"]
+      },
+      "ecommerce": {
+        "title": "E-Commerce Solutions",
+        "desc": "Professional Shopify stores, custom themes, and high-converting shopping experiences — built fast and at competitive rates.",
+        "features": ["Shopify Store Development", "Custom Liquid Themes", "Conversion Rate Optimization", "Payment Gateway Integration"]
+      },
+      "consulting": {
+        "title": "Tech Consulting & Advisory",
+        "desc": "System audits, code reviews, and infrastructure architecture design to ensure your systems scale securely.",
+        "features": ["Code & System Audits", "System Architecture Design", "Digital Transformation Roadmap", "Team Training & Mentoring"]
+      },
+      "maintenance": {
+        "title": "Systems & Apps Maintenance",
+        "desc": "Monthly retainers for ongoing development, support, and scaling of your digital products — your tech team on call.",
+        "features": ["Monthly Tech Support", "Bug Fixes & Security Patches", "Performance & Security Updates", "Monthly Progress Reports"]
+      }
+    }
+  },
+  "portfolio": {
+    "label": "Our Work",
+    "title": "Real Projects. Real Impact.",
+    "subtitle": "Every project represents a genuine partnership and measurable results. Here's a glimpse of what we've built.",
+    "filters": {
+      "all": "All",
+      "web": "Web Apps",
+      "ecommerce": "E-Commerce",
+      "edtech": "EdTech",
+      "enterprise": "Enterprise",
+      "extension": "WhatsApp Extensions"
+    },
+    "viewLive": "Live Preview",
+    "viewGithub": "GitHub",
+    "viewCaseStudy": "Case Study",
+    "wip": "In Progress",
+    "startSimilar": "Start a Similar Project"
+  },
+  "techStack": {
+    "label": "Tech Stack",
+    "title": "We Work With World-Class Technologies",
+    "subtitle": "We choose the right tool for every job — no one-size-fits-all approach.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "ai": "AI & Automation",
+      "ecommerce": "E-Commerce",
+      "devops": "DevOps & Cloud"
+    }
+  },
+  "process": {
+    "label": "Our Process",
+    "title": "From Idea to Launch — Clear Steps, Zero Surprises",
+    "subtitle": "A battle-tested methodology that guarantees quality and full transparency at every stage.",
+    "steps": {
+      "discovery": { "title": "Discovery & Planning", "desc": "We deeply understand your business, goals, and target audience before writing a single line of code." },
+      "design": { "title": "UI/UX Design", "desc": "We craft beautiful, interactive interfaces focused on user experience and conversion." },
+      "development": { "title": "Development & Build", "desc": "Clean, documented code built to scale — with full maintainability for the future." },
+      "testing": { "title": "Testing & QA", "desc": "Comprehensive testing across devices and browsers before every delivery." },
+      "launch": { "title": "Launch & Support", "desc": "We deploy with confidence and stay by your side post-launch to ensure sustained performance." }
+    }
+  },
+  "whyUs": {
+    "label": "Why ATOMIZE",
+    "title": "Your Real Tech Partner",
+    "subtitle": "We're not just a dev shop — we're a team that shares your vision and works to achieve your goals.",
+    "stats": {
+      "projects": "Projects Delivered",
+      "clients": "Happy Clients",
+      "tech": "Technologies Mastered",
+      "years": "Years Experience"
+    },
+    "cards": {
+      "speed": { "title": "Fast Delivery", "desc": "We commit to deadlines and deliver high-quality projects on time, every time." },
+      "quality": { "title": "Uncompromising Quality", "desc": "Clean code, professional design, and high performance in every product we ship." },
+      "support": { "title": "Post-Launch Support", "desc": "We don't disappear after launch — our team is with you to ensure your product succeeds." },
+      "price": { "title": "Competitive Pricing", "desc": "World-class quality at rates that fit the regional market — no compromises." }
+    }
+  },
+  "testimonials": {
+    "label": "Client Testimonials",
+    "title": "What Our Partners Say About Us"
+  },
+  "pricing": {
+    "label": "Engagement Models",
+    "title": "A Model That Fits Every Stage",
+    "subtitle": "Whether you're starting out or scaling up — we have the right solution for you.",
+    "mostPopular": "Most Popular",
+    "cta": "Get Started",
+    "contactUs": "Contact Us",
+    "tiers": {
+      "quickLaunch": {
+        "name": "Quick Launch",
+        "nameAr": "Quick Launch",
+        "desc": "Perfect for small projects, portfolios, and landing pages.",
+        "features": ["Professional website", "Mobile-responsive design", "Delivered in 2-4 weeks", "1 month post-launch support"]
+      },
+      "fullBuild": {
+        "name": "Full Build",
+        "nameAr": "Full Build",
+        "desc": "For complete digital products — apps, platforms, and stores.",
+        "features": ["Full web or mobile app", "Custom admin dashboard", "API & service integrations", "3-month post-launch warranty"]
+      },
+      "enterprise": {
+        "name": "Enterprise Retainer",
+        "nameAr": "Enterprise Retainer",
+        "desc": "A dedicated tech team for continuous support and development.",
+        "features": ["Guaranteed monthly dev hours", "Priority support & response", "Monthly performance reports", "Ongoing tech consulting"]
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact Us",
+    "title": "Ready to Build Something Great?",
+    "subtitle": "Tell us about your project and we'll get back to you within 24 hours.",
+    "tabs": {
+      "consultation": "Free Consultation",
+      "estimation": "Project Estimation"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number (optional)",
+      "business": "Business Type",
+      "message": "Your Message",
+      "service": "Service Needed",
+      "budget": "Estimated Budget",
+      "brief": "Project Brief",
+      "timeline": "Expected Timeline",
+      "submit": "Send Request",
+      "submitting": "Sending...",
+      "success": "Request sent successfully! We'll be in touch soon.",
+      "placeholders": {
+        "name": "John Smith",
+        "email": "example@domain.com",
+        "phone": "+1 555 234 5678",
+        "business": "Company, startup, individual...",
+        "message": "Tell us about your project...",
+        "brief": "Describe the project, goal, and target audience...",
+        "service": "Select a service",
+        "budget": "Select a range",
+        "timeline": "Select timeline"
+      },
+      "services": ["Web & Mobile Development", "AI Automation", "E-Commerce", "Tech Consulting", "Maintenance & Support"],
+      "budgets": ["Under $1,000", "$1,000 - $5,000", "$5,000 - $15,000", "$15,000+", "Not decided yet"],
+      "timelines": ["ASAP", "1-2 months", "3-6 months", "6+ months"]
+    },
+    "info": {
+      "whatsapp": "Chat on WhatsApp",
+      "email": "Send us an Email",
+      "call": "Call Us Directly",
+      "responseTime": "We respond within 24 hours"
+    }
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Answers to the Most Common Questions",
+    "items": [
+      { "q": "How long does it take to build a website or app?", "a": "It depends on project scope. Simple sites: 2-4 weeks. Full applications: 2-4 months. We define the exact timeline after discussing your requirements." },
+      { "q": "What technologies do you use?", "a": "We use modern tech stacks: React, Next.js, Flutter for mobile, Node.js, Python, n8n, and Shopify. We choose the right technology for each project." },
+      { "q": "Do you provide post-launch support?", "a": "Yes! Every project includes a free support period. We also offer flexible monthly maintenance plans to keep your project running smoothly." },
+      { "q": "How much does a Shopify store cost?", "a": "Professional Shopify stores start at very competitive prices with guaranteed quality and fast delivery. Contact us for an accurate estimate for your project." },
+      { "q": "Can you work alongside our internal team?", "a": "Absolutely! We work flexibly — whether as consultants, a complementary team, or a fully dedicated team depending on your needs." },
+      { "q": "How do you guarantee the quality of your work?", "a": "We follow a rigorous methodology: regular code reviews, comprehensive testing across multiple devices, and we deliver fully documented projects." },
+      { "q": "Do you work with clients outside Egypt?", "a": "Yes! We work with clients from Saudi Arabia, UAE, Kuwait, and worldwide. Our communication is 100% digital with high efficiency." },
+      { "q": "What AI automation services do you offer?", "a": "We build autonomous AI agents, automated WhatsApp response systems, n8n workflow automation, and custom data analytics dashboards." }
+    ]
+  },
+  "footer": {
+    "tagline": "Building the digital future, one line at a time.",
+    "copyright": "All rights reserved.",
+    "links": {
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "process": "Process",
+      "contact": "Contact",
+      "faq": "FAQ"
+    },
+    "social": "Follow Us",
+    "legalNote": "Precision-built. Business-first."
+  },
+  "whatsapp": {
+    "tooltip": "Chat with us on WhatsApp"
+  },
+  "theme": {
+    "cyberpunk": "Atomize-AI (Official)",
+    "navy": "Cyber Teal",
+    "neon": "Electric Blue"
+  }
+}

@@ -1,39 +1,61 @@
-import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { useThemeContext } from '../context/ThemeContext'
 
-const clients = [
-  'Real Estate',
-  'Agencies',
-  'Clinics',
-  'Service Firms',
-  'Founders',
-  'Sales Teams',
+const items = [
+  { emoji: '📲', nameAr: 'عطارة دهب الشيخ (Dahab Sender)', nameEn: 'Dahab Sender (Attar Dahab)' },
+  { emoji: '🧩', nameAr: 'أوتيكير', nameEn: 'Auticare' },
+  { emoji: '🏗️', nameAr: 'أولاد خضر', nameEn: 'Awlad Khedr' },
+  { emoji: '🏢', nameAr: 'العمران للمقاولات', nameEn: 'El-Omran' },
+  { emoji: '📖', nameAr: 'منصة مكث', nameEn: 'Mukth Green' },
+  { emoji: '👕', nameAr: 'هيسوير', nameEn: 'Hiswear' },
+  { emoji: '⚛️', nameAr: 'React', nameEn: 'React' },
+  { emoji: '▲', nameAr: 'Next.js', nameEn: 'Next.js' },
+  { emoji: '🔄', nameAr: 'n8n', nameEn: 'n8n' },
+  { emoji: '📱', nameAr: 'Flutter', nameEn: 'Flutter' },
+  { emoji: '🛒', nameAr: 'Shopify', nameEn: 'Shopify' },
 ]
 
-export default function TrustedBy() {
+function MarqueeItem({ emoji, name }: { emoji: string; name: string }) {
   return (
-    <section className="relative bg-[#050505] border-y border-[rgba(243,243,243,0.08)] py-10">
-      <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)]">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row items-center gap-6 md:gap-12"
+    <div
+      className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border mx-3 shrink-0"
+      style={{ borderColor: 'var(--border)', backgroundColor: 'var(--surface)', color: 'var(--text-sub)' }}
+    >
+      <span className="text-[18px]">{emoji}</span>
+      <span className="text-[13px] font-semibold whitespace-nowrap">{name}</span>
+    </div>
+  )
+}
+
+export default function TrustedBy() {
+  const { t } = useTranslation()
+  const { isRTL } = useThemeContext()
+  const font = isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif"
+
+  // Double items for seamless marquee
+  const doubled = [...items, ...items]
+
+  return (
+    <section className="py-14 border-y overflow-hidden" style={{ borderColor: 'var(--border)', backgroundColor: 'var(--surface)' }}>
+      <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] mb-6">
+        <p
+          className="text-center text-[11px] font-bold tracking-[0.15em] uppercase"
+          style={{ color: 'var(--text-muted)', fontFamily: font }}
         >
-          <p className="font-['JetBrains_Mono'] text-[11px] text-[#666666] uppercase tracking-[0.05em] whitespace-nowrap">
-            Trusted by
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {clients.map((client) => (
-              <span
-                key={client}
-                className="font-['Plus_Jakarta_Sans'] text-[14px] font-semibold text-[#555555] hover:text-[#999999] transition-colors duration-200"
-              >
-                {client}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+          {t('trustedBy.label')}
+        </p>
+      </div>
+
+      <div className="pause-on-hover">
+        <div className="flex animate-marquee">
+          {doubled.map((item, i) => (
+            <MarqueeItem
+              key={i}
+              emoji={item.emoji}
+              name={isRTL ? item.nameAr : item.nameEn}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

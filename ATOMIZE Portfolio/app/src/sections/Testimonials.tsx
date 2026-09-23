@@ -1,74 +1,103 @@
 import { motion } from 'framer-motion'
+import { Quote } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useThemeContext } from '../context/ThemeContext'
 
 const testimonials = [
   {
-    quote:
-      'We reduced manual lead processing by 90%. The agent books meetings while we sleep.',
-    name: 'Client — Real Estate Group',
-    metric: '90%',
-    metricLabel: 'reduction',
+    nameAr: 'أحمد محمد', nameEn: 'Ahmed Mohamed',
+    roleAr: 'مؤسس شركة ناشئة', roleEn: 'Startup Founder',
+    projectAr: 'تطبيق ويب', projectEn: 'Web App',
+    textAr: 'ATOMIZE حولت فكرتي إلى منتج حقيقي في وقت قياسي. الفريق محترف جداً، الكود نظيف، والتسليم كان في الموعد تماماً.',
+    textEn: 'ATOMIZE turned my idea into a real product in record time. The team is very professional, the code is clean, and delivery was exactly on time.',
+    avatar: '👨‍💼',
+    accentColor: '#FF5A00',
   },
   {
-    quote:
-      'The Command Center replaced five tools we were paying for. One dashboard. Total clarity.',
-    name: 'Client — Service Agency',
-    metric: '5',
-    metricLabel: 'tools replaced',
+    nameAr: 'سارة عبدالله', nameEn: 'Sara Abdullah',
+    roleAr: 'مديرة تسويق', roleEn: 'Marketing Manager',
+    projectAr: 'متجر Shopify', projectEn: 'Shopify Store',
+    textAr: 'المتجر الذي بنوه لنا يعمل بشكل ممتاز. ارتفعت معدلات التحويل بشكل ملحوظ بعد الإطلاق. أنصح الجميع بالتعامل مع ATOMIZE.',
+    textEn: 'The store they built for us works excellently. Conversion rates increased noticeably after launch. I recommend everyone to work with ATOMIZE.',
+    avatar: '👩‍💼',
+    accentColor: '#00D68F',
   },
   {
-    quote:
-      'Outbound output tripled without any deliverability issues. The infrastructure just works.',
-    name: 'Client — Sales Team',
-    metric: '3x',
-    metricLabel: 'output',
+    nameAr: 'خالد إبراهيم', nameEn: 'Khaled Ibrahim',
+    roleAr: 'مدير عمليات', roleEn: 'Operations Manager',
+    projectAr: 'أتمتة وذكاء اصطناعي', projectEn: 'AI Automation',
+    textAr: 'نظام الأتمتة الذي بنوه وفّر علينا ساعات عمل يومية. التكامل مع WhatsApp كان رائعاً والدعم بعد التسليم ممتاز.',
+    textEn: 'The automation system they built saves us daily work hours. The WhatsApp integration was amazing and post-launch support is excellent.',
+    avatar: '👨‍💻',
+    accentColor: '#B347FF',
   },
 ]
 
 export default function Testimonials() {
+  const { t } = useTranslation()
+  const { isRTL } = useThemeContext()
+  const font = isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif"
+
   return (
-    <section className="relative bg-[#050505] py-[120px] md:py-[160px]">
+    <section id="testimonials" className="py-[120px] md:py-[160px]" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)]">
-        <motion.h2
+        {/* Header */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
-          className="font-['Plus_Jakarta_Sans'] font-bold text-[clamp(32px,3.5vw,48px)] leading-[1.1] tracking-[-0.01em] text-[#F3F3F3] mb-16 md:mb-24"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
         >
-          Proof over promises.
-        </motion.h2>
+          <p className="text-[11px] font-bold tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--accent)', fontFamily: font }}>
+            {t('testimonials.label')}
+          </p>
+          <h2 className="text-[clamp(30px,4vw,52px)] font-black leading-[1.1]" style={{ fontFamily: font, color: 'var(--text)' }}>
+            {t('testimonials.title')}
+          </h2>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+          {testimonials.map((tm, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{
-                duration: 0.7,
-                delay: i * 0.1,
-                ease: [0.2, 0, 0, 1],
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              className="relative p-7 rounded-2xl border transition-all duration-300 hover:scale-[1.015]"
+              style={{ backgroundColor: 'var(--bg)', borderColor: 'var(--border)' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = tm.accentColor + '50'
+                e.currentTarget.style.boxShadow = `0 0 30px ${tm.accentColor}15`
               }}
-              className="group p-8 md:p-10 bg-[#111111] border border-[rgba(243,243,243,0.08)] rounded-[12px] flex flex-col hover:border-[rgba(255,90,0,0.3)] hover:scale-[1.02] transition-all duration-300"
-              style={{ transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)' }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
             >
-              <div className="mb-auto">
-                <p className="font-['Inter'] text-[16px] leading-[1.6] text-[#cccccc] mb-8">
-                  "{t.quote}"
-                </p>
-              </div>
-              <div>
-                <p className="font-['JetBrains_Mono'] text-[12px] text-[#666666] uppercase tracking-[0.05em] mb-4">
-                  {t.name}
-                </p>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-['Plus_Jakarta_Sans'] font-bold text-[32px] text-[#FF5A00]">
-                    {t.metric}
-                  </span>
-                  <span className="font-['Inter'] text-[14px] text-[#999999]">
-                    {t.metricLabel}
-                  </span>
+              {/* Quote icon */}
+              <Quote size={28} className="mb-4 opacity-40" style={{ color: tm.accentColor }} />
+
+              <p className="text-[14px] leading-[1.75] mb-6 italic" style={{ color: 'var(--text-sub)', fontFamily: isRTL ? "'Cairo', sans-serif" : 'Inter, sans-serif' }}>
+                "{isRTL ? tm.textAr : tm.textEn}"
+              </p>
+
+              {/* Author */}
+              <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-[20px]"
+                  style={{ backgroundColor: tm.accentColor + '20' }}
+                >
+                  {tm.avatar}
+                </div>
+                <div>
+                  <div className="text-[14px] font-bold" style={{ color: 'var(--text)', fontFamily: font }}>
+                    {isRTL ? tm.nameAr : tm.nameEn}
+                  </div>
+                  <div className="text-[12px]" style={{ color: 'var(--text-sub)' }}>
+                    {isRTL ? tm.roleAr : tm.roleEn} · {isRTL ? tm.projectAr : tm.projectEn}
+                  </div>
                 </div>
               </div>
             </motion.div>

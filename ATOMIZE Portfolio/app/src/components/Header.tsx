@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useThemeContext } from '../context/ThemeContext'
+import ThemeSwitcher from './ThemeSwitcher'
+import LanguageToggle from './LanguageToggle'
+import AtomizeLogo from './AtomizeLogo'
+import { socialLinks } from '../data/socials'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Why Us', href: '#why-us' },
-  { label: 'FAQ', href: '#faq' },
+  { key: 'services', href: '#services' },
+  { key: 'portfolio', href: '#portfolio' },
+  { key: 'techStack', href: '#tech-stack' },
+  { key: 'process', href: '#process' },
+  { key: 'whyUs', href: '#why-us' },
+  { key: 'contact', href: '#contact' },
 ]
 
 export default function Header() {
+  const { t } = useTranslation()
+  const { isRTL } = useThemeContext()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -23,38 +33,88 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#050505]/90 backdrop-blur-md border-b border-[rgba(243,243,243,0.08)]' : 'bg-transparent'
+          scrolled
+            ? 'backdrop-blur-md border-b'
+            : 'bg-transparent'
         }`}
+        style={scrolled ? {
+          backgroundColor: 'rgba(var(--bg-rgb, 5,5,5), 0.92)',
+          borderBottomColor: 'var(--border)',
+          backdropFilter: 'blur(16px)',
+          background: 'color-mix(in srgb, var(--bg) 88%, transparent)',
+        } : {}}
       >
-        <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] h-[72px] flex items-center justify-between">
-          <a href="#" className="font-['Plus_Jakarta_Sans'] font-bold text-[20px] tracking-tight text-[#F3F3F3]">
-            ATOMIZE
+        <div className="max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] h-[72px] flex items-center justify-between gap-4">
+          {/* Official Atomize-AI Brand Logo */}
+          <a href="#" className="shrink-0 group">
+            <AtomizeLogo size={36} />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.key}
                 href={link.href}
-                className="relative font-['Plus_Jakarta_Sans'] text-[14px] font-semibold text-[#999999] hover:text-[#F3F3F3] transition-colors duration-200 group"
+                className="text-[13px] font-semibold transition-colors duration-200 relative group"
+                style={{ color: 'var(--text-sub)', fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#88E03F')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}
               >
-                {link.label}
-                <span className="absolute -bottom-1 left-1/2 w-0 h-[2px] bg-[#FF5A00] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
+                {t(`nav.${link.key}`)}
+                <span
+                  className="absolute -bottom-1 left-1/2 w-0 h-[2px] group-hover:w-full group-hover:left-0 transition-all duration-300"
+                  style={{ backgroundColor: '#88E03F' }}
+                />
               </a>
             ))}
-            <a
-              href="#cta"
-              className="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold tracking-[0.05em] uppercase bg-[#FF5A00] text-[#050505] px-6 py-2.5 rounded-full hover:bg-[#F3F3F3] hover:scale-[1.02] transition-all duration-300"
-              style={{ transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)' }}
-            >
-              Get Started
-            </a>
           </nav>
+
+          {/* Right Controls */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Social Icons */}
+            <div className="flex items-center gap-2 me-2">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-all duration-200 hover:scale-110 p-1.5 rounded-lg border flex items-center justify-center"
+                  style={{ color: 'var(--text-sub)', borderColor: 'var(--border)', backgroundColor: 'var(--surface)' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = '#88E03F'
+                    e.currentTarget.style.borderColor = 'rgba(0, 128, 132, 0.6)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'var(--text-sub)'
+                    e.currentTarget.style.borderColor = 'var(--border)'
+                  }}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+
+            <LanguageToggle />
+            <ThemeSwitcher />
+
+            <a
+              href="#contact"
+              className="text-[13px] font-extrabold tracking-wide uppercase px-6 py-2.5 rounded-full transition-all duration-300 btn-primary-lime shrink-0 shadow-lg"
+              style={{
+                fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
+              {t('nav.getStarted')}
+            </a>
+          </div>
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-[#F3F3F3] p-2"
+            className="lg:hidden p-2 transition-colors"
+            style={{ color: 'var(--text)' }}
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
           >
@@ -63,7 +123,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -71,37 +131,69 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-[#050505] flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6"
+            style={{ backgroundColor: 'var(--bg)' }}
           >
             <button
-              className="absolute top-5 right-5 text-[#F3F3F3] p-2"
+              className="absolute top-5 right-5 p-2"
+              style={{ color: 'var(--text)' }}
               onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
             >
               <X size={28} />
             </button>
+
+            {/* Mobile Social Row */}
+            <div className="flex items-center gap-4 mb-2">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-all hover:scale-110"
+                  style={{ color: 'var(--text-sub)' }}
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
+            </div>
+
             {navLinks.map((link, i) => (
               <motion.a
-                key={link.label}
+                key={link.key}
                 href={link.href}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.4, ease: [0.2, 0, 0, 1] }}
+                transition={{ delay: i * 0.07, duration: 0.4, ease: [0.2, 0, 0, 1] }}
                 onClick={() => setMenuOpen(false)}
-                className="font-['Plus_Jakarta_Sans'] text-[32px] font-bold text-[#F3F3F3] hover:text-[#FF5A00] transition-colors duration-200"
+                className="text-[28px] font-bold transition-colors duration-200"
+                style={{
+                  fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif",
+                  color: 'var(--text)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text)')}
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </motion.a>
             ))}
+
+            <div className="flex items-center gap-3 mt-4">
+              <LanguageToggle />
+              <ThemeSwitcher />
+            </div>
+
             <motion.a
-              href="#cta"
+              href="#contact"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.4, ease: [0.2, 0, 0, 1] }}
+              transition={{ delay: 0.45, duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
-              className="mt-4 font-['Plus_Jakarta_Sans'] text-[14px] font-semibold tracking-[0.05em] uppercase bg-[#FF5A00] text-[#050505] px-8 py-3 rounded-full"
+              className="mt-2 text-[14px] font-bold tracking-[0.05em] uppercase px-8 py-3.5 rounded-full"
+              style={{ backgroundColor: 'var(--accent)', color: 'var(--bg)' }}
             >
-              Get Started
+              {t('nav.getStarted')}
             </motion.a>
           </motion.div>
         )}
