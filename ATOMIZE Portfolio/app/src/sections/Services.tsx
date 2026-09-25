@@ -53,7 +53,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, delay: i * 0.08, ease: [0.2, 0, 0, 1] }}
-                className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 hover:scale-[1.015] ${
+                className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 hover:scale-[1.015] hover:-translate-y-1 flex flex-col ${
                   isLarge && i === 0 ? 'lg:col-span-1 md:row-span-1' : ''
                 }`}
                 style={{
@@ -77,7 +77,7 @@ export default function Services() {
                   />
                 </div>
 
-                <div className="p-7 md:p-8">
+                <div className="p-7 md:p-8 flex flex-col flex-1">
                   {/* Icon */}
                   <div
                     className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5 transition-all duration-300 group-hover:scale-110"
@@ -109,7 +109,7 @@ export default function Services() {
                   {/* CTA */}
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-[13px] font-semibold transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 text-[13px] font-semibold transition-colors duration-200 mt-auto pt-5"
                     style={{ color: 'var(--text-sub)', fontFamily: font }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}

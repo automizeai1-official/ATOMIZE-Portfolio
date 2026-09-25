@@ -1,54 +1,43 @@
-import { Palette } from 'lucide-react'
-import { useThemeContext, type Theme } from '../context/ThemeContext'
+import { motion } from 'framer-motion'
+import { Sun, Moon } from 'lucide-react'
+import { useThemeContext } from '../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
 
-const themes: { id: Theme; labelKey: string; dot: string }[] = [
-  { id: 'cyberpunk', labelKey: 'theme.cyberpunk', dot: '#88E03F' },
-  { id: 'navy-emerald', labelKey: 'theme.navy', dot: '#008084' },
-  { id: 'neon-purple', labelKey: 'theme.neon', dot: '#3580E6' },
-]
-
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useThemeContext()
+  const { theme, toggleTheme } = useThemeContext()
   const { t } = useTranslation()
-  const current = themes.find(t => t.id === theme)!
+  const isDark = theme === 'dark'
 
   return (
-    <div className="relative group">
-      <button
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[12px] font-semibold transition-all"
-        style={{ borderColor: 'var(--border)', color: 'var(--text-sub)', backgroundColor: 'var(--surface)' }}
+    <button
+      onClick={toggleTheme}
+      className="relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[12px] font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
+      style={{
+        borderColor: 'var(--border)',
+        color: 'var(--text)',
+        backgroundColor: 'var(--surface)',
+        boxShadow: isDark ? '0 0 12px rgba(136, 224, 63, 0.12)' : '0 0 12px rgba(0, 128, 132, 0.12)',
+      }}
+      title={isDark ? t('theme.light') : t('theme.dark')}
+      aria-label="Toggle Night/Light Mode"
+    >
+      <motion.div
+        key={theme}
+        initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+        animate={{ rotate: 0, scale: 1, opacity: 1 }}
+        exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        className="flex items-center justify-center text-[14px]"
       >
-        <span
-          className="w-2.5 h-2.5 rounded-full shrink-0"
-          style={{ backgroundColor: current.dot, boxShadow: `0 0 6px ${current.dot}` }}
-        />
-        <Palette size={12} />
-      </button>
-
-      {/* Dropdown */}
-      <div
-        className="absolute top-full mt-2 end-0 rounded-xl border p-1.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 min-w-[160px]"
-        style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
-      >
-        {themes.map((th) => (
-          <button
-            key={th.id}
-            onClick={() => setTheme(th.id)}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] font-medium transition-colors text-start"
-            style={{
-              color: theme === th.id ? 'var(--text)' : 'var(--text-sub)',
-              backgroundColor: theme === th.id ? 'var(--surface2)' : 'transparent',
-            }}
-          >
-            <span
-              className="w-2.5 h-2.5 rounded-full shrink-0"
-              style={{ backgroundColor: th.dot, boxShadow: theme === th.id ? `0 0 8px ${th.dot}` : 'none' }}
-            />
-            {t(th.labelKey)}
-          </button>
-        ))}
-      </div>
-    </div>
+        {isDark ? (
+          <Sun size={15} className="text-[#88E03F]" />
+        ) : (
+          <Moon size={15} className="text-[#008084]" />
+        )}
+      </motion.div>
+      <span className="hidden sm:inline text-[11px] font-bold" style={{ color: 'var(--text)' }}>
+        {isDark ? t('theme.light') : t('theme.dark')}
+      </span>
+    </button>
   )
 }

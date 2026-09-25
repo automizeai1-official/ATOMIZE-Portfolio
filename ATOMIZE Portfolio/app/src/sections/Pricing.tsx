@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, Star } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useThemeContext } from '../context/ThemeContext'
 
@@ -32,7 +32,7 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           {tierKeys.map((key, i) => {
             const isMiddle = i === 1
             const features = t(`pricing.tiers.${key}.features`, { returnObjects: true }) as string[]
@@ -44,16 +44,18 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`relative rounded-2xl border p-8 transition-all duration-300 hover:scale-[1.02] ${isMiddle ? 'md:-mt-4 md:mb-4' : ''}`}
+                className={`relative rounded-2xl border p-8 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 ${
+                  isMiddle ? 'md:-mt-4' : ''
+                }`}
                 style={{
                   backgroundColor: isMiddle ? 'var(--surface)' : 'var(--bg)',
                   borderColor: isMiddle ? 'var(--accent)' : 'var(--border)',
-                  boxShadow: isMiddle ? '0 0 40px var(--glow)' : 'none',
+                  boxShadow: isMiddle ? '0 0 50px var(--glow), 0 20px 60px rgba(0,0,0,0.12)' : 'none',
                 }}
                 onMouseEnter={e => {
                   if (!isMiddle) {
                     e.currentTarget.style.borderColor = 'var(--border-h)'
-                    e.currentTarget.style.boxShadow = '0 0 25px var(--glow)'
+                    e.currentTarget.style.boxShadow = '0 0 30px var(--glow)'
                   }
                 }}
                 onMouseLeave={e => {
@@ -63,14 +65,22 @@ export default function Pricing() {
                   }
                 }}
               >
-                {/* Popular badge */}
+                {/* Ribbon badge for middle card */}
                 {isMiddle && (
-                  <div
-                    className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[11px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full"
-                    style={{ backgroundColor: 'var(--accent)', color: 'var(--bg)' }}
-                  >
-                    {t('pricing.mostPopular')}
-                  </div>
+                  <>
+                    <div
+                      className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg"
+                      style={{ backgroundColor: 'var(--accent)', color: 'var(--bg)' }}
+                    >
+                      <Star size={11} fill="currentColor" />
+                      {t('pricing.mostPopular')}
+                    </div>
+                    {/* Gradient top glow */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                      style={{ background: 'linear-gradient(90deg, var(--cyber-teal), var(--electric-blue), var(--lime-energy))' }}
+                    />
+                  </>
                 )}
 
                 <h3 className="text-[22px] font-black mb-2" style={{ fontFamily: font, color: 'var(--text)' }}>
@@ -97,18 +107,20 @@ export default function Pricing() {
                   style={
                     isMiddle
                       ? { backgroundColor: 'var(--accent)', color: 'var(--bg)' }
-                      : { border: '1px solid var(--border)', color: 'var(--text)' }
+                      : { border: '1.5px solid var(--border)', color: 'var(--text)' }
                   }
                   onMouseEnter={e => {
                     if (!isMiddle) {
                       e.currentTarget.style.borderColor = 'var(--accent)'
                       e.currentTarget.style.color = 'var(--accent)'
+                      e.currentTarget.style.boxShadow = '0 0 20px var(--glow)'
                     }
                   }}
                   onMouseLeave={e => {
                     if (!isMiddle) {
                       e.currentTarget.style.borderColor = 'var(--border)'
                       e.currentTarget.style.color = 'var(--text)'
+                      e.currentTarget.style.boxShadow = 'none'
                     }
                   }}
                 >

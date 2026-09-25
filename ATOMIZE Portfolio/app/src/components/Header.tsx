@@ -58,13 +58,13 @@ export default function Header() {
                 href={link.href}
                 className="text-[13px] font-semibold transition-colors duration-200 relative group"
                 style={{ color: 'var(--text-sub)', fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#88E03F')}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-sub)')}
               >
                 {t(`nav.${link.key}`)}
                 <span
                   className="absolute -bottom-1 left-1/2 w-0 h-[2px] group-hover:w-full group-hover:left-0 transition-all duration-300"
-                  style={{ backgroundColor: '#88E03F' }}
+                  style={{ backgroundColor: 'var(--accent)' }}
                 />
               </a>
             ))}
@@ -84,8 +84,8 @@ export default function Header() {
                   className="transition-all duration-200 hover:scale-110 p-1.5 rounded-lg border flex items-center justify-center"
                   style={{ color: 'var(--text-sub)', borderColor: 'var(--border)', backgroundColor: 'var(--surface)' }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.color = '#88E03F'
-                    e.currentTarget.style.borderColor = 'rgba(0, 128, 132, 0.6)'
+                    e.currentTarget.style.color = 'var(--accent)'
+                    e.currentTarget.style.borderColor = 'var(--border-h)'
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.color = 'var(--text-sub)'

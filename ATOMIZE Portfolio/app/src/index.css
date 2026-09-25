@@ -5,7 +5,9 @@
 @tailwind utilities;
 
 /* ─── Atomize-AI Official Brand Theme ─────────────────────────────────────────── */
+/* ─── Atomize-AI Night Mode (Official Brand Theme) ─────────────────────────── */
 :root,
+[data-theme="dark"],
 [data-theme="cyberpunk"],
 [data-theme="atomize-ai"] {
   /* Brand Core Palette */
@@ -21,7 +23,7 @@
 
   /* Roles */
   --accent:        #88E03F;             /* Lime Energy — Primary CTA glow & key badges */
-  --accent2:       #3580E6;             /* Electric Blue — Secondary CTA & orbital connections */
+  --accent2:       #3580E6;             /* Electric Blue — Secondary CTA & connections */
   --primary-teal:  #008084;             /* Cyber Teal — Wordmark & primary headline accents */
 
   /* Text Roles */
@@ -67,70 +69,111 @@
   --radius:             0.75rem;
 }
 
-/* ─── Secondary Theme: Deep Space Navy ────────────────────────────────────────── */
-[data-theme="navy-emerald"] {
-  --cyber-teal:    #00A896;
-  --electric-blue: #028090;
-  --lime-energy:   #02C39A;
-  --bg:            #020B14;
-  --surface:       rgba(4, 21, 38, 0.75);
-  --surface2:      rgba(8, 33, 58, 0.85);
-  --surface-solid: #061A2E;
-  --accent:        #02C39A;
-  --accent2:       #028090;
-  --primary-teal:  #00A896;
-  --text:          #E8F4FD;
-  --text-muted:    #3B6C94;
-  --text-sub:      #5B8DB8;
-  --border:        rgba(2, 195, 154, 0.2);
-  --border-h:      rgba(2, 195, 154, 0.55);
-  --border-lime:   rgba(2, 195, 154, 0.45);
-  --border-blue:   rgba(2, 128, 144, 0.45);
-  --glow:          rgba(2, 195, 154, 0.25);
-  --glow-h:        rgba(2, 195, 154, 0.45);
-  --glow-teal:     rgba(0, 168, 150, 0.35);
-  --glow-blue:     rgba(2, 128, 144, 0.35);
-  --grid-color:    rgba(2, 128, 144, 0.05);
+/* ─── Atomize-AI Light Mode (Logo-Derived High-Contrast Canvas) ───────────────── */
+[data-theme="light"] {
+  /* Brand Core */
+  --cyber-teal:    #008084;
+  --electric-blue: #1D63BD;
+  --lime-energy:   #0E8A5D;
 
-  --background:         210 90% 5%;
-  --foreground:         210 40% 95%;
-  --card:               210 80% 9%;
-  --card-foreground:    210 40% 95%;
-  --primary:            165 98% 39%;
-  --primary-foreground: 210 90% 5%;
+  /* Crisp Light Canvas */
+  --bg:            #F7FAFA;
+  --surface:       #FFFFFF;
+  --surface2:      #EDF5F5;
+  --surface-solid: #FFFFFF;
+
+  /* Roles */
+  --accent:        #008084;
+  --accent2:       #1D63BD;
+  --primary-teal:  #008084;
+
+  /* Ultra High-Contrast Text for Crisp Readability */
+  --text:          #08171A;
+  --text-sub:      #1F4248;
+  --text-muted:    #52747A;
+
+  /* Borders */
+  --border:        rgba(0, 128, 132, 0.22);
+  --border-h:      rgba(0, 128, 132, 0.65);
+  --border-lime:   rgba(0, 128, 132, 0.4);
+  --border-blue:   rgba(29, 99, 189, 0.4);
+
+  /* Subtle Glass Shadows */
+  --glow:          rgba(0, 128, 132, 0.16);
+  --glow-h:        rgba(0, 128, 132, 0.32);
+  --glow-teal:     rgba(0, 128, 132, 0.22);
+  --glow-blue:     rgba(29, 99, 189, 0.22);
+
+  /* Clean Faint Grid */
+  --grid-color:    rgba(0, 128, 132, 0.07);
+
+  /* Radix UI mapped vars */
+  --background:         180 20% 97%;
+  --foreground:         185 90% 4%;
+  --card:               0 0% 100%;
+  --card-foreground:    185 90% 4%;
+  --popover:            0 0% 100%;
+  --popover-foreground: 185 90% 4%;
+  --primary:            182 100% 26%;
+  --primary-foreground: 0 0% 100%;
+  --secondary:          215 80% 56%;
+  --secondary-foreground:185 90% 4%;
+  --muted:              180 30% 94%;
+  --muted-foreground:   182 20% 40%;
+  --accent-shadcn:      182 100% 26%;
+  --accent-foreground:  0 0% 100%;
+  --destructive:        0 84.2% 60.2%;
+  --destructive-foreground:0 0% 98%;
+  --border-shadcn:      182 100% 26% / 0.18;
+  --input:              180 30% 94%;
+  --ring:               182 100% 26%;
+  --radius:             0.75rem;
 }
 
-/* ─── Tertiary Theme: Cyber Neon Violet ───────────────────────────────────────── */
-[data-theme="neon-purple"] {
-  --cyber-teal:    #008084;
-  --electric-blue: #7038FF;
-  --lime-energy:   #88E03F;
-  --bg:            #070311;
-  --surface:       rgba(21, 10, 36, 0.75);
-  --surface2:      rgba(33, 16, 56, 0.85);
-  --surface-solid: #150A24;
-  --accent:        #88E03F;
-  --accent2:       #7038FF;
-  --primary-teal:  #008084;
-  --text:          #F3EEFF;
-  --text-muted:    #695484;
-  --text-sub:      #9E88BD;
-  --border:        rgba(112, 56, 255, 0.22);
-  --border-h:      rgba(136, 224, 63, 0.55);
-  --border-lime:   rgba(136, 224, 63, 0.45);
-  --border-blue:   rgba(112, 56, 255, 0.45);
-  --glow:          rgba(136, 224, 63, 0.25);
-  --glow-h:        rgba(136, 224, 63, 0.45);
-  --glow-teal:     rgba(0, 128, 132, 0.35);
-  --glow-blue:     rgba(112, 56, 255, 0.35);
-  --grid-color:    rgba(112, 56, 255, 0.05);
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(0, 128, 132, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 25%, rgba(53, 128, 230, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(0, 128, 132, 0.05) 0px, transparent 50%);
+}
 
-  --background:         270 85% 4%;
-  --foreground:         270 40% 95%;
-  --card:               270 70% 9%;
-  --card-foreground:    270 40% 95%;
-  --primary:            89 74% 56%;
-  --primary-foreground: 270 85% 4%;
+/* Light mode button and text adjustments */
+[data-theme="light"] .btn-primary-lime {
+  background-color: #008084;
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(0, 128, 132, 0.3);
+}
+[data-theme="light"] .btn-primary-lime:hover {
+  background-color: #006b6f;
+  box-shadow: 0 6px 28px rgba(0, 128, 132, 0.45);
+  transform: scale(1.03);
+}
+
+[data-theme="light"] .btn-secondary-blue {
+  background-color: #FFFFFF;
+  border-color: #008084;
+  color: #08171A;
+}
+[data-theme="light"] .btn-secondary-blue:hover {
+  background-color: #008084;
+  border-color: #008084;
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 128, 132, 0.25);
+}
+
+[data-theme="light"] .glass-card {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 128, 132, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 128, 132, 0.08);
+}
+[data-theme="light"] .glass-card:hover {
+  border-color: rgba(0, 128, 132, 0.55);
+  box-shadow: 0 8px 30px rgba(0, 128, 132, 0.16);
+}
+
+[data-theme="light"] .text-glow-lime,
+[data-theme="light"] .text-glow-teal {
+  text-shadow: none;
 }
 
 /* ─── Base Styles ─────────────────────────────────────────────────────────────── */
@@ -296,9 +339,9 @@
   }
 
   .btn-secondary-blue {
-    background-color: transparent;
+    background-color: var(--surface);
     border: 1.5px solid var(--electric-blue);
-    color: #F8FAFC;
+    color: var(--text);
     font-weight: 700;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
   }

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { Search, Layers, Code2, CheckCircle2, Rocket } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useThemeContext } from '../context/ThemeContext'
@@ -10,6 +11,8 @@ export default function HowItWorks() {
   const { t } = useTranslation()
   const { isRTL } = useThemeContext()
   const font = isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif"
+  const lineRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(lineRef, { once: true, margin: '-100px' })
 
   return (
     <section id="process" className="py-[120px] md:py-[160px]" style={{ backgroundColor: 'var(--surface)' }}>
@@ -34,12 +37,41 @@ export default function HowItWorks() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 relative">
-          {/* Connecting line (desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 relative" ref={lineRef}>
+          {/* Animated connecting line (desktop) */}
           <div
-            className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[1px]"
+            className="hidden md:block absolute top-[27px] left-[10%] right-[10%] h-[2px] overflow-hidden"
             style={{ backgroundColor: 'var(--border)' }}
-          />
+          >
+            <motion.div
+              className="h-full"
+              initial={{ scaleX: 0 }}
+              animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 1.8, ease: [0.2, 0, 0, 1], delay: 0.3 }}
+              style={{
+                transformOrigin: isRTL ? 'right' : 'left',
+                background: 'linear-gradient(90deg, #008084 0%, #3580E6 50%, #88E03F 100%)',
+              }}
+            />
+          </div>
+
+          {/* Mobile vertical line */}
+          <div
+            className="md:hidden absolute start-[27px] top-[56px] bottom-[56px] w-[2px] overflow-hidden"
+            style={{ backgroundColor: 'var(--border)' }}
+          >
+            <motion.div
+              className="w-full"
+              initial={{ scaleY: 0 }}
+              animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
+              transition={{ duration: 2, ease: [0.2, 0, 0, 1], delay: 0.3 }}
+              style={{
+                transformOrigin: 'top',
+                height: '100%',
+                background: 'linear-gradient(180deg, #008084 0%, #3580E6 50%, #88E03F 100%)',
+              }}
+            />
+          </div>
 
           {stepKeys.map((key, i) => {
             const Icon = stepIcons[i]
@@ -49,12 +81,16 @@ export default function HowItWorks() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.2, 0, 0, 1] }}
-                className="relative flex flex-col items-center text-center group"
+                transition={{ duration: 0.6, delay: i * 0.15, ease: [0.2, 0, 0, 1] }}
+                className="relative flex md:flex-col items-start md:items-center md:text-center gap-5 md:gap-0 group ps-14 md:ps-0"
               >
-                {/* Step number badge */}
-                <div
-                  className="relative z-10 w-[56px] h-[56px] rounded-full border-2 flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                {/* Step node */}
+                <motion.div
+                  className="relative z-10 w-[54px] h-[54px] rounded-full border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 shrink-0 absolute start-0 md:static md:mb-5"
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 + i * 0.15, type: 'spring', stiffness: 200 }}
                   style={{
                     backgroundColor: 'var(--surface)',
                     borderColor: 'var(--border)',
@@ -78,14 +114,16 @@ export default function HowItWorks() {
                   >
                     {i + 1}
                   </span>
-                </div>
+                </motion.div>
 
-                <h3 className="text-[16px] font-bold mb-2" style={{ fontFamily: font, color: 'var(--text)' }}>
-                  {t(`process.steps.${key}.title`)}
-                </h3>
-                <p className="text-[13px] leading-[1.65]" style={{ color: 'var(--text-sub)', fontFamily: isRTL ? "'Cairo', sans-serif" : 'Inter, sans-serif' }}>
-                  {t(`process.steps.${key}.desc`)}
-                </p>
+                <div className="pt-1 md:pt-0">
+                  <h3 className="text-[16px] font-bold mb-2" style={{ fontFamily: font, color: 'var(--text)' }}>
+                    {t(`process.steps.${key}.title`)}
+                  </h3>
+                  <p className="text-[13px] leading-[1.65]" style={{ color: 'var(--text-sub)', fontFamily: isRTL ? "'Cairo', sans-serif" : 'Inter, sans-serif' }}>
+                    {t(`process.steps.${key}.desc`)}
+                  </p>
+                </div>
               </motion.div>
             )
           })}

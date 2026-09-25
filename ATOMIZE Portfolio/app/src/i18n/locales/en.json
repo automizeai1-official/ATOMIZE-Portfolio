@@ -194,15 +194,25 @@
   "faq": {
     "label": "FAQ",
     "title": "Answers to the Most Common Questions",
+    "searchPlaceholder": "Search questions...",
+    "noResults": "No results — try a different keyword",
+    "categories": {
+      "process": "Process",
+      "pricing": "Pricing",
+      "technical": "Technical",
+      "support": "Support"
+    },
+    "stillHaveQuestions": "Still have questions?",
+    "askOnWhatsapp": "Ask us on WhatsApp",
     "items": [
-      { "q": "How long does it take to build a website or app?", "a": "It depends on project scope. Simple sites: 2-4 weeks. Full applications: 2-4 months. We define the exact timeline after discussing your requirements." },
-      { "q": "What technologies do you use?", "a": "We use modern tech stacks: React, Next.js, Flutter for mobile, Node.js, Python, n8n, and Shopify. We choose the right technology for each project." },
-      { "q": "Do you provide post-launch support?", "a": "Yes! Every project includes a free support period. We also offer flexible monthly maintenance plans to keep your project running smoothly." },
-      { "q": "How much does a Shopify store cost?", "a": "Professional Shopify stores start at very competitive prices with guaranteed quality and fast delivery. Contact us for an accurate estimate for your project." },
-      { "q": "Can you work alongside our internal team?", "a": "Absolutely! We work flexibly — whether as consultants, a complementary team, or a fully dedicated team depending on your needs." },
-      { "q": "How do you guarantee the quality of your work?", "a": "We follow a rigorous methodology: regular code reviews, comprehensive testing across multiple devices, and we deliver fully documented projects." },
-      { "q": "Do you work with clients outside Egypt?", "a": "Yes! We work with clients from Saudi Arabia, UAE, Kuwait, and worldwide. Our communication is 100% digital with high efficiency." },
-      { "q": "What AI automation services do you offer?", "a": "We build autonomous AI agents, automated WhatsApp response systems, n8n workflow automation, and custom data analytics dashboards." }
+      { "q": "How long does it take to build a website or app?", "a": "It depends on project scope. Simple sites: 2-4 weeks. Full applications: 2-4 months. We define the exact timeline after discussing your requirements.", "category": "process" },
+      { "q": "What technologies do you use?", "a": "We use modern tech stacks: React, Next.js, Flutter for mobile, Node.js, Python, n8n, and Shopify. We choose the right technology for each project.", "category": "technical" },
+      { "q": "Do you provide post-launch support?", "a": "Yes! Every project includes a free support period. We also offer flexible monthly maintenance plans to keep your project running smoothly.", "category": "support" },
+      { "q": "How much does a Shopify store cost?", "a": "Professional Shopify stores start at very competitive prices with guaranteed quality and fast delivery. Contact us for an accurate estimate for your project.", "category": "pricing" },
+      { "q": "Can you work alongside our internal team?", "a": "Absolutely! We work flexibly — whether as consultants, a complementary team, or a fully dedicated team depending on your needs.", "category": "process" },
+      { "q": "How do you guarantee the quality of your work?", "a": "We follow a rigorous methodology: regular code reviews, comprehensive testing across multiple devices, and we deliver fully documented projects.", "category": "technical" },
+      { "q": "Do you work with clients outside Egypt?", "a": "Yes! We work with clients from Saudi Arabia, UAE, Kuwait, and worldwide. Our communication is 100% digital with high efficiency.", "category": "process" },
+      { "q": "What AI automation services do you offer?", "a": "We build autonomous AI agents, automated WhatsApp response systems, n8n workflow automation, and custom data analytics dashboards.", "category": "technical" }
     ]
   },
   "footer": {
@@ -222,8 +232,11 @@
     "tooltip": "Chat with us on WhatsApp"
   },
   "theme": {
-    "cyberpunk": "Atomize-AI (Official)",
-    "navy": "Cyber Teal",
-    "neon": "Electric Blue"
+    "dark": "Night Mode",
+    "light": "Light Mode"
+  },
+  "sticky": {
+    "text": "Planning your next digital project?",
+    "cta": "Get in Touch"
   }
 }

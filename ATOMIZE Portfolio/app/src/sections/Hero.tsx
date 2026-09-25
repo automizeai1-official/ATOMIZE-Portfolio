@@ -21,8 +21,8 @@ function StatBadge({ value, suffix = '+', labelKey }: { value: number; suffix?: 
       }}
     >
       <div
-        className="text-[30px] font-black leading-none mb-1 text-glow-lime"
-        style={{ color: '#88E03F', fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
+        className="text-[30px] font-black leading-none mb-1"
+        style={{ color: 'var(--accent)', fontFamily: isRTL ? "'Cairo', sans-serif" : "'Plus Jakarta Sans', sans-serif" }}
       >
         {count}{suffix}
       </div>
@@ -62,18 +62,18 @@ export default function Hero() {
       />
 
       {/* Floating orbital tech badges */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
         {techPills.map((pill, i) => (
           <motion.div
             key={pill}
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.45, scale: 1 }}
+            animate={{ opacity: 0.85, scale: 1 }}
             transition={{ delay: 1 + i * 0.15, duration: 0.6 }}
             className="absolute text-[11px] font-mono font-semibold px-3 py-1.5 rounded-full border glass-card shadow-lg"
             style={{
-              borderColor: 'rgba(0, 128, 132, 0.35)',
-              color: '#88E03F',
-              backgroundColor: 'rgba(7, 24, 34, 0.8)',
+              borderColor: 'var(--border)',
+              color: 'var(--text)',
+              backgroundColor: 'var(--surface)',
               top: `${14 + ((i * 35) % 65)}%`,
               right: isRTL ? undefined : `${4 + ((i * 12) % 26)}%`,
               left: isRTL ? `${4 + ((i * 12) % 26)}%` : undefined,
@@ -81,52 +81,52 @@ export default function Hero() {
               animationDelay: `${i * 0.5}s`,
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#88E03F] inline-block me-1.5 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full inline-block me-1.5 animate-pulse" style={{ backgroundColor: 'var(--accent)' }} />
             {pill}
           </motion.div>
         ))}
       </div>
 
       {/* Main Content Layout */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] w-full pt-[110px] pb-20">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-[clamp(16px,4vw,48px)] w-full pt-[80px] md:pt-[110px] pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-8 max-w-[760px]">
-            {/* Badge Highlighted in Lime Energy */}
+            {/* Badge Highlighted */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] }}
               className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8 glass-card"
               style={{
-                borderColor: 'rgba(136, 224, 63, 0.45)',
-                backgroundColor: 'rgba(7, 24, 34, 0.85)',
+                borderColor: 'var(--border-h)',
+                backgroundColor: 'var(--surface)',
               }}
             >
-              <span className="w-2.5 h-2.5 rounded-full animate-ping" style={{ backgroundColor: '#88E03F' }} />
+              <span className="w-2.5 h-2.5 rounded-full animate-ping" style={{ backgroundColor: 'var(--accent)' }} />
               <span
                 className="text-[12px] font-bold tracking-wide flex items-center gap-1.5"
-                style={{ color: '#88E03F', fontFamily: font }}
+                style={{ color: 'var(--accent)', fontFamily: font }}
               >
-                <Sparkles size={13} className="text-[#88E03F]" />
+                <Sparkles size={13} style={{ color: 'var(--accent)' }} />
                 {t('hero.badge')}
               </span>
             </motion.div>
 
-            {/* Headlines in Cyber Teal & White */}
+            {/* Headlines */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0, 0, 1] }}
-              className="text-[clamp(38px,6vw,76px)] font-black leading-[1.05] tracking-[-0.02em] mb-6 text-white"
-              style={{ fontFamily: font }}
+              className="text-[clamp(34px,5.5vw,72px)] font-black leading-[1.15] tracking-[-0.02em] mb-6"
+              style={{ fontFamily: font, color: 'var(--text)' }}
             >
               {t('hero.headline1')}{' '}
               <span
-                className="text-glow-teal block sm:inline"
+                className="block sm:inline"
                 style={{
-                  color: '#008084',
-                  backgroundImage: 'linear-gradient(135deg, #008084 0%, #3580E6 50%, #88E03F 100%)',
+                  color: 'var(--accent)',
+                  backgroundImage: 'linear-gradient(135deg, var(--cyber-teal) 0%, var(--electric-blue) 60%, var(--accent) 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -135,13 +135,13 @@ export default function Hero() {
               </span>
             </motion.h1>
 
-            {/* Subtitle with Lime Energy highlights */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.2, 0, 0, 1] }}
-              className="text-[17px] sm:text-[18px] leading-[1.8] max-w-[620px] mb-10 text-slate-300"
-              style={{ fontFamily: font }}
+              className="text-[17px] sm:text-[18px] leading-[1.8] max-w-[620px] mb-10"
+              style={{ fontFamily: font, color: 'var(--text-sub)' }}
             >
               {t('hero.subtitle')}
             </motion.p>
@@ -153,7 +153,6 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.2, 0, 0, 1] }}
               className="flex flex-wrap items-center gap-4 mb-14"
             >
-              {/* Primary High-Converting CTA: Lime Energy (#88E03F) glow */}
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2.5 text-[14px] font-extrabold tracking-wide uppercase px-8 py-4 rounded-full btn-primary-lime"
@@ -163,7 +162,6 @@ export default function Hero() {
                 <ArrowRight size={17} className={isRTL ? 'rotate-180' : ''} />
               </a>
 
-              {/* Secondary CTA: Electric Blue (#3580E6) */}
               <a
                 href="#portfolio"
                 className="inline-flex items-center gap-2.5 text-[14px] font-bold tracking-wide uppercase px-8 py-4 rounded-full btn-secondary-blue glass-card"
@@ -180,8 +178,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.45, ease: [0.2, 0, 0, 1] }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-3.5"
             >
-              <StatBadge value={47} labelKey="hero.stat1Label" />
-              <StatBadge value={35} labelKey="hero.stat2Label" />
+              <StatBadge value={17} labelKey="hero.stat1Label" />
+              <StatBadge value={8} labelKey="hero.stat2Label" />
               <StatBadge value={24} suffix="+" labelKey="hero.stat3Label" />
               <StatBadge value={3} suffix="+" labelKey="hero.stat4Label" />
             </motion.div>
@@ -198,14 +196,14 @@ export default function Hero() {
             <div
               className="relative w-[340px] h-[340px] rounded-3xl glass-card flex flex-col items-center justify-center p-8 text-center"
               style={{
-                boxShadow: '0 0 60px rgba(0, 128, 132, 0.25), inset 0 0 30px rgba(53, 128, 230, 0.1)',
-                borderColor: 'rgba(0, 128, 132, 0.4)',
+                boxShadow: '0 0 50px var(--glow-teal), inset 0 0 25px rgba(53, 128, 230, 0.08)',
+                borderColor: 'var(--border-h)',
               }}
             >
               {/* Outer pulsing ring */}
               <div
                 className="absolute inset-0 rounded-3xl border border-dashed animate-orbit opacity-30 pointer-events-none"
-                style={{ borderColor: '#3580E6' }}
+                style={{ borderColor: 'var(--electric-blue)' }}
               />
 
               {/* Big Atomic Mark */}
@@ -214,16 +212,23 @@ export default function Hero() {
               </div>
 
               {/* Brand Label */}
-              <div className="text-[20px] font-black tracking-tight mb-1" style={{ color: '#008084' }}>
-                Atomize<span style={{ color: '#3580E6' }}>-</span><span style={{ color: '#88E03F' }}>AI</span>
+              <div className="text-[20px] font-black tracking-tight mb-1" style={{ color: 'var(--primary-teal)' }}>
+                Atomize<span style={{ color: 'var(--electric-blue)' }}>-</span><span style={{ color: 'var(--accent)' }}>AI</span>
               </div>
-              <p className="text-[12px] font-semibold text-slate-400">
+              <p className="text-[12px] font-semibold" style={{ color: 'var(--text-sub)' }}>
                 Foundational Connectivity & Intelligent Systems
               </p>
 
               {/* Bottom connection status */}
-              <div className="mt-4 flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border" style={{ borderColor: 'rgba(136, 224, 63, 0.3)', backgroundColor: 'rgba(136, 224, 63, 0.1)', color: '#88E03F' }}>
-                <span className="w-2 h-2 rounded-full bg-[#88E03F] animate-ping" />
+              <div
+                className="mt-4 flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border"
+                style={{
+                  borderColor: 'var(--border)',
+                  backgroundColor: 'var(--surface2)',
+                  color: 'var(--accent)',
+                }}
+              >
+                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: 'var(--accent)' }} />
                 SYSTEM ONLINE
               </div>
             </div>
@@ -238,9 +243,16 @@ export default function Hero() {
         transition={{ delay: 1.5, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}>
-          <ChevronDown size={22} style={{ color: 'var(--cyber-teal)' }} />
-        </motion.div>
+        <a
+          href="#services"
+          className="flex flex-col items-center gap-1.5 transition-colors group"
+          style={{ color: 'var(--text-muted)' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+        >
+          <span className="text-[10px] font-mono uppercase tracking-widest">{t('nav.services')}</span>
+          <ChevronDown size={16} className="animate-bounce" />
+        </a>
       </motion.div>
     </section>
   )

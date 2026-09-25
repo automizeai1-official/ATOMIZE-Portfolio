@@ -6,6 +6,7 @@ import { useCounter } from '../hooks/useCounter'
 
 const cardKeys = ['speed', 'quality', 'support', 'price'] as const
 const cardIcons = { speed: Zap, quality: Award, support: HeartHandshake, price: DollarSign }
+const cardColors = ['var(--cyber-teal)', 'var(--electric-blue)', 'var(--accent)', 'var(--cyber-teal)']
 
 function AnimatedStat({ value, suffix = '+', labelKey }: { value: number; suffix?: string; labelKey: string }) {
   const { t } = useTranslation()
@@ -15,10 +16,10 @@ function AnimatedStat({ value, suffix = '+', labelKey }: { value: number; suffix
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-[54px] font-black leading-none mb-2 text-glow" style={{ color: 'var(--accent)', fontFamily: font }}>
+      <div className="text-[48px] sm:text-[56px] font-black leading-none mb-2" style={{ color: 'var(--accent)', fontFamily: font }}>
         {count}{suffix}
       </div>
-      <div className="text-[14px]" style={{ color: 'var(--text-sub)', fontFamily: font }}>
+      <div className="text-[13px] font-semibold" style={{ color: 'var(--text-sub)', fontFamily: font }}>
         {t(labelKey)}
       </div>
     </div>
@@ -52,17 +53,27 @@ export default function WhyUs() {
           </p>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats panel — glassmorphic with gradient background */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 p-10 rounded-2xl border"
-          style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+          className="relative grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 p-10 rounded-2xl border overflow-hidden"
+          style={{
+            backgroundColor: 'var(--surface)',
+            borderColor: 'var(--border)',
+          }}
         >
-          <AnimatedStat value={47} labelKey="whyUs.stats.projects" />
-          <AnimatedStat value={35} labelKey="whyUs.stats.clients" />
+          {/* Gradient background accent */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at 30% 50%, rgba(0,128,132,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(53,128,230,0.06) 0%, transparent 60%)',
+            }}
+          />
+          <AnimatedStat value={17} labelKey="whyUs.stats.projects" />
+          <AnimatedStat value={8} labelKey="whyUs.stats.clients" />
           <AnimatedStat value={24} labelKey="whyUs.stats.tech" />
           <AnimatedStat value={3} labelKey="whyUs.stats.years" />
         </motion.div>
@@ -71,6 +82,7 @@ export default function WhyUs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {cardKeys.map((key, i) => {
             const Icon = cardIcons[key]
+            const color = cardColors[i]
             return (
               <motion.div
                 key={key}
@@ -78,7 +90,7 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
+                className="relative p-6 rounded-2xl border overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
                 style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = 'var(--border-h)'
@@ -89,7 +101,15 @@ export default function WhyUs() {
                   e.currentTarget.style.boxShadow = 'none'
                 }}
               >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--surface2)', color: 'var(--accent)' }}>
+                {/* Colored top bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px]"
+                  style={{ backgroundColor: color }}
+                />
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-300"
+                  style={{ backgroundColor: 'var(--surface2)', color: color }}
+                >
                   <Icon size={20} />
                 </div>
                 <h3 className="text-[17px] font-bold mb-2" style={{ fontFamily: font, color: 'var(--text)' }}>
